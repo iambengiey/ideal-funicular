@@ -40,7 +40,6 @@
         "@type": "AccountingService",
         "name": "Hlakaniphilez Accountants & Advisors",
         "telephone": "+27-81-556-6602",
-        "email": "nonny@hlakaniphilez.co.za",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "21A Umbulane",
@@ -284,7 +283,16 @@
             </p>
             <div class="contact-list">
               <a href="tel:0815566602">081 556 6602</a>
-              <a href="mailto:nonny@hlakaniphilez.co.za">nonny@hlakaniphilez.co.za</a>
+              <a
+                class="email-link"
+                href="#contact"
+                data-user="nonny"
+                data-domain="hlakaniphilez"
+                data-tld="co.za"
+                aria-label="Reveal email address"
+              >
+                Reveal email address
+              </a>
               <p>21A Umbulane, Kloof, 3619, South Africa</p>
             </div>
             <ul class="trust-points" aria-label="Key benefits">
@@ -301,7 +309,7 @@
             </label>
             <label>
               Email address
-              <input type="email" name="email" autocomplete="email" placeholder="nonny@hlakaniphilez.co.za" />
+              <input type="email" name="email" autocomplete="email" placeholder="Enter your email address" />
             </label>
             <label>
               Phone number
@@ -321,5 +329,21 @@
         <span>Accounting • Tax • Payroll • Compliance</span>
       </footer>
     </div>
+
+    <script>
+      const emailLink = document.querySelector('.email-link');
+
+      if (emailLink) {
+        emailLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          const { user, domain, tld } = emailLink.dataset;
+          const address = `${user}@${domain}.${tld}`;
+          emailLink.href = `mailto:${address}`;
+          emailLink.textContent = address;
+          emailLink.setAttribute('aria-label', `Email ${address}`);
+          window.location.href = `mailto:${address}`;
+        }, { once: true });
+      }
+    </script>
   </body>
 </html>

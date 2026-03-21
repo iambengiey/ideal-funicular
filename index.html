@@ -14,6 +14,10 @@
     />
     <meta name="author" content="Hlakaniphilez Accountants & Advisors" />
     <meta name="robots" content="index, follow" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    />
     <meta property="og:title" content="Hlakaniphilez Accountants & Advisors" />
     <meta
       property="og:description"
@@ -40,7 +44,6 @@
         "@type": "AccountingService",
         "name": "Hlakaniphilez Accountants & Advisors",
         "telephone": "+27-81-556-6602",
-        "email": "nonny@hlakaniphilez.co.za",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "21A Umbulane",
@@ -284,7 +287,10 @@
             </p>
             <div class="contact-list">
               <a href="tel:0815566602">081 556 6602</a>
-              <a href="mailto:nonny@hlakaniphilez.co.za">nonny@hlakaniphilez.co.za</a>
+              <button class="email-button" type="button" data-email-reveal aria-label="Reveal email address">
+                Reveal email address
+              </button>
+              <p class="email-note">For better privacy, the email address is only revealed when you request it.</p>
               <p>21A Umbulane, Kloof, 3619, South Africa</p>
             </div>
             <ul class="trust-points" aria-label="Key benefits">
@@ -301,7 +307,7 @@
             </label>
             <label>
               Email address
-              <input type="email" name="email" autocomplete="email" placeholder="nonny@hlakaniphilez.co.za" />
+              <input type="email" name="email" autocomplete="email" placeholder="Enter your email address" />
             </label>
             <label>
               Phone number
@@ -321,5 +327,7 @@
         <span>Accounting • Tax • Payroll • Compliance</span>
       </footer>
     </div>
+
+    <script src="script.js" defer></script>
   </body>
 </html>

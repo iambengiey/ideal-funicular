@@ -505,12 +505,31 @@ p {
   color: var(--text-heading);
 }
 
-.email-link {
+.email-link,
+.email-button {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  padding-bottom: 0.08rem;
+  padding: 0 0 0.08rem;
+  border: 0;
   border-bottom: 1px dashed rgba(122, 46, 57, 0.4);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.email-button:hover,
+.email-button:focus-visible,
+.email-link:hover,
+.email-link:focus-visible {
+  color: var(--burgundy-700);
+}
+
+.email-note {
+  font-size: 0.92rem;
+  color: var(--charcoal-500);
 }
 
 input,
@@ -718,5 +737,9 @@ textarea:focus {
   .value-cards article h3,
   .value-cards article p {
     color: var(--text-heading);
+  }
+
+  .email-note {
+    color: #d7c9cb;
   }
 }

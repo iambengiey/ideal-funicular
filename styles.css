@@ -743,3 +743,302 @@ textarea:focus {
     color: #d7c9cb;
   }
 }
+
+/* ============================================================
+   ADDITIONS: missing classes required by index.html + script.js
+   ============================================================ */
+
+/* ── Theme & nav toggle buttons ──────────────────────────────────── */
+.theme-toggle,
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(122, 46, 57, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--charcoal-700);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.theme-toggle:hover,
+.nav-toggle:hover {
+  background: var(--burgundy-100);
+  border-color: rgba(122, 46, 57, 0.3);
+  color: var(--burgundy-700);
+}
+
+/* header-actions flex wrapper */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Sticky header (class toggled by JS) ────────────────────────── */
+.site-header.is-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 254, 254, 0.93);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122, 46, 57, 0.1);
+  box-shadow: 0 2px 16px rgba(35, 31, 32, 0.06);
+  border-radius: 0 0 22px 22px;
+  padding: 0.6rem 0.75rem;
+  margin-inline: -0.75rem;
+  width: calc(100% + 1.5rem);
+}
+
+/* ── Active nav link (class toggled by JS on scroll) ─────────────── */
+.site-nav a.is-active {
+  color: var(--burgundy-700);
+}
+.site-nav a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ── Scroll reveal ───────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Mobile nav toggle ──────────────────────────────────────── */
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 980px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .site-nav {
+    display: none;
+  }
+  .site-nav.is-open {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+/* ── FAQ grid + accordion ────────────────────────────────────── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 980px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-item {
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-strong);
+  border: 1px solid rgba(46, 40, 43, 0.12);
+  box-shadow: 0 4px 12px rgba(35, 31, 32, 0.06);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.faq-item[open] {
+  box-shadow: var(--shadow-card);
+}
+.faq-item summary {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--charcoal-950);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.2rem 0;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--burgundy-700);
+  transition: transform 0.2s ease;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item p {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(122, 46, 57, 0.1);
+}
+
+/* ── Styled select (no select-wrapper needed — applied directly) ─── */
+.contact-card select {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(46, 40, 43, 0.14);
+  padding: 0.9rem 2.5rem 0.9rem 0.95rem;
+  font: inherit;
+  color: var(--charcoal-950);
+  background-color: var(--surface-muted);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a2e39' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-card select:focus {
+  outline: none;
+  border-color: rgba(140, 57, 69, 0.45);
+  box-shadow: 0 0 0 3px rgba(140, 57, 69, 0.12);
+}
+
+/* ── Form field error text ─────────────────────────────────────── */
+.form-field {
+  display: grid;
+  gap: 0.42rem;
+}
+.field-error {
+  font-size: 0.85rem;
+  color: #a12c2c;
+  min-height: 1.2em;
+}
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: rgba(161, 44, 44, 0.5);
+  outline-color: rgba(161, 44, 44, 0.25);
+}
+.required-marker {
+  color: var(--burgundy-700);
+}
+.hp-field {
+  display: none;
+}
+.form-privacy {
+  font-size: 0.82rem;
+  color: var(--charcoal-500);
+  text-align: center;
+}
+
+/* ── Form success banner ─────────────────────────────────────── */
+.form-success {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  background: rgba(122, 46, 57, 0.08);
+  border: 1px solid rgba(122, 46, 57, 0.2);
+  border-radius: 12px;
+  color: var(--burgundy-700);
+}
+.form-success[hidden] {
+  display: none;
+}
+
+/* ── Skip link (accessibility) ────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--burgundy-700);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: 0 0 8px 0;
+  font-weight: 700;
+  z-index: 200;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Performance: deferred paint for off-screen sections ──────────── */
+#services,
+#about,
+#process,
+#faq,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* ── Dark mode overrides for new components ──────────────────────── */
+[data-theme="dark"] .site-header.is-sticky {
+  background: rgba(22, 18, 20, 0.93);
+  border-bottom-color: rgba(245, 236, 238, 0.08);
+}
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .nav-toggle {
+  background: rgba(49, 42, 45, 0.92);
+  border-color: rgba(245, 236, 238, 0.12);
+  color: #d7c9cb;
+}
+[data-theme="dark"] .faq-item {
+  background: rgba(45, 39, 42, 0.94);
+  border-color: rgba(245, 236, 238, 0.08);
+}
+[data-theme="dark"] .faq-item summary {
+  color: #fff8f8;
+}
+[data-theme="dark"] .contact-card select {
+  background-color: rgba(58, 51, 55, 0.9);
+  color: #fff8f8;
+  border-color: rgba(245, 236, 238, 0.08);
+}
+[data-theme="dark"] .field-error {
+  color: #e07070;
+}
+
+/* system-pref dark — mirrors [data-theme="dark"] for users who haven't toggled */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .site-header.is-sticky {
+    background: rgba(22, 18, 20, 0.93);
+    border-bottom-color: rgba(245, 236, 238, 0.08);
+  }
+  :root:not([data-theme="light"]) .theme-toggle,
+  :root:not([data-theme="light"]) .nav-toggle {
+    background: rgba(49, 42, 45, 0.92);
+    border-color: rgba(245, 236, 238, 0.12);
+    color: #d7c9cb;
+  }
+  :root:not([data-theme="light"]) .faq-item {
+    background: rgba(45, 39, 42, 0.94);
+    border-color: rgba(245, 236, 238, 0.08);
+  }
+  :root:not([data-theme="light"]) .faq-item summary {
+    color: #fff8f8;
+  }
+  :root:not([data-theme="light"]) .contact-card select {
+    background-color: rgba(58, 51, 55, 0.9);
+    color: #fff8f8;
+    border-color: rgba(245, 236, 238, 0.08);
+  }
+}
